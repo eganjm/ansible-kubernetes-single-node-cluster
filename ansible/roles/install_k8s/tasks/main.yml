@@ -15,8 +15,10 @@
     #- name: Add Kubernetes repository key
     #shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
-  #- name:
-  # shell: |
+- name: add kube package repo
+  become: yes
+  shell: echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
   #    cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
   #    deb https://apt.kubernetes.io/ kubernetes-xenial main
   #    EOF
@@ -32,5 +34,5 @@
   loop: "{{ kube_packages }}"
 
 - name: Hold the package "{{ item }}"
-  command: apt-mark hold "{{ item }}"
+  shell: apt-mark hold "{{ item }}"
   loop: "{{ kube_packages }}"

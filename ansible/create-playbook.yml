@@ -34,4 +34,4 @@
   connection: local
   tasks:
   - name: untaint master node
-    command: kubectl taint nodes --all node-role.kubernetes.io/master-
+    command: kubectl taint nodes --all node-role.kubernetes.io/control-plane-
