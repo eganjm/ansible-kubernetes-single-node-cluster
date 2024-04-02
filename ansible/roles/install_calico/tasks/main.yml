@@ -1,10 +1,10 @@
 ---
 
 - name: Install Calico
-  command: kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+  shell: kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
   
 - name: Install resources
-  command: kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+  shell: kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
 
 - name: wait for pods to come up
   shell: kubectl get pods -n calico-system -o json

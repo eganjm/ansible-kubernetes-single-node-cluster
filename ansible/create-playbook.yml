@@ -4,6 +4,7 @@
 # --- Pre-required --- #
 # -------------------- #
 - hosts: localhost
+  connection: local
   tasks:
   - name: Disable Swap
     command: swapoff -a
@@ -12,6 +13,7 @@
 # --- Docker --- #
 # -------------- #
 - hosts: localhost
+  connection: local
   roles:
   - delete_docker     # Used to delete old instances
   - install_docker    # Install Docker Engine
@@ -21,6 +23,7 @@
 # ------------------ #
 ## - Set-up the cluster & master node
 - hosts: localhost
+  connection: local
   roles:
   - install_k8s
   - k8s_cluster
@@ -28,6 +31,7 @@
 
 ## - Untaint master node to have the single node cluster
 - hosts: localhost
+  connection: local
   tasks:
   - name: untaint master node
     command: kubectl taint nodes --all node-role.kubernetes.io/master-

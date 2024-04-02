@@ -12,14 +12,14 @@
   - apt-transport-https 
   - curl
 
-- name: Add Kubernetes repository key
-  command: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    #- name: Add Kubernetes repository key
+    #shell: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
-- name:
-  command: |
-      cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-      deb https://apt.kubernetes.io/ kubernetes-xenial main
-      EOF
+  #- name:
+  # shell: |
+  #    cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+  #    deb https://apt.kubernetes.io/ kubernetes-xenial main
+  #    EOF
 
 - name: apt-get update
   apt:
